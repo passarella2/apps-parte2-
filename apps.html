@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apps - AppHub Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl/Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">AppHub <span class="pro-tag">PRO</span></div>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Alternar Tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Abrir Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="apps.html" class="active-link">Apps</a></li>
+                <li><a href="index.html#about">Sobre</a></li>
+                <li><a href="index.html#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="apps" class="apps-section page-apps">
+            <h2>Nossos Aplicativos Essenciais</h2>
+            <p class="section-subtitle">Uma coleção de utilitários rápidos e funcionais para o seu dia a dia.</p>
+            <div class="apps-grid">
+                <div class="app-card" data-app="calculator">
+                    <h3><i class="fas fa-calculator"></i> Calculadora Simples</h3>
+                    <div class="app-content">
+                        <input type="number" id="calc-input1" placeholder="Número 1">
+                        <select id="calc-operator" aria-label="Operador">
+                            <option value="+">+</option>
+                            <option value="-">-</option>
+                            <option value="*">*</option>
+                            <option value="/">/</option>
+                        </select>
+                        <input type="number" id="calc-input2" placeholder="Número 2">
+                        <button onclick="calculate()">Calcular</button>
+                        <p id="calc-result" class="result-display">Resultado: </p>
+                    </div>
+                </div>
+
+                <div class="app-card" data-app="todo-list">
+                    <h3><i class="fas fa-list-check"></i> Lista de Tarefas</h3>
+                    <div class="app-content">
+                        <input type="text" id="todo-input" placeholder="Nova tarefa (ex: Estudar JS)">
+                        <button onclick="addTodo()">Adicionar Tarefa</button>
+                        <ul id="todo-list" class="styled-list"></ul>
+                    </div>
+                </div>
+
+                <div class="app-card" data-app="word-counter">
+                    <h3><i class="fas fa-font"></i> Contador de Texto</h3>
+                    <div class="app-content">
+                        <textarea id="word-input" rows="5" placeholder="Digite um texto para contar palavras e caracteres..."></textarea>
+                        <div class="metrics">
+                            <p id="word-count">Palavras: 0</p>
+                            <p id="char-count">Caracteres: 0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-card" data-app="password-generator">
+                    <h3><i class="fas fa-lock"></i> Gerador de Senhas</h3>
+                    <div class="app-content">
+                        <label for="pass-length">Comprimento: <span id="length-display">12</span></label>
+                        <input type="range" id="pass-length" value="12" min="8" max="32" oninput="document.getElementById('length-display').textContent=this.value; generatePassword();">
+                        <div class="options">
+                            <input type="checkbox" id="include-uppercase" checked onchange="generatePassword()"> <label for="include-uppercase">Maiúsculas</label><br>
+                            <input type="checkbox" id="include-numbers" checked onchange="generatePassword()"> <label for="include-numbers">Números</label><br>
+                            <input type="checkbox" id="include-symbols" checked onchange="generatePassword()"> <label for="include-symbols">Símbolos</label>
+                        </div>
+                        <button onclick="generatePassword()">Gerar Nova Senha</button>
+                        <p id="generated-pass" class="result-display password-output" title="Clique para copiar"></p>
+                    </div>
+                </div>
+
+                <div class="app-card" data-app="quiz">
+                    <h3><i class="fas fa-question-circle"></i> Quiz Interativo</h3>
+                    <div class="app-content">
+                        <p id="quiz-question" class="quiz-text">Clique em 'Iniciar Quiz' para começar.</p>
+                        <div id="quiz-options" class="quiz-options">
+                            </div>
+                        <button id="quiz-start-btn" onclick="startQuiz()">Iniciar Quiz</button>
+                        <p id="quiz-score" class="result-display">Pontuação: 0/0</p>
+                    </div>
+                </div>
+
+                <div class="app-card" data-app="clock">
+                    <h3><i class="fas fa-clock"></i> Relógio Digital</h3>
+                    <div class="app-content">
+                        <div id="clock" class="digital-clock">00:00:00</div>
+                        <button id="clock-toggle" onclick="toggleClock()">Pausar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AppHub Pro. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
